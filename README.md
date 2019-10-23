@@ -20,7 +20,20 @@ func Test_GetCurrencyPairQuote(t *testing.T) {
 ```
 
 ```go
-//
+// cahsflow_test.go
+func TestNetPresentValue(t *testing.T) {
+  var tests = []struct {
+  
+  }{
+  
+  }
+  
+  for _, test := range tests {
+    if got := NetPresentValue(test.rate, test.values); math.Abs() > Precision {
+      t.Errorf("NetPresentValue(%f, %v) = %f", test.rate, test.values, got)
+    }
+  }
+}
 
 
 
