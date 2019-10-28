@@ -17,6 +17,24 @@ func Test_GetCurrencyPairQuote(t *testing.T) {
   
   assert.Equal(t, USDEUR, p.Symbol)
 }
+
+// history_test.go
+
+func Test_GetHistory(t *testing.T) {
+  
+  s := startTestServer("history_fixture.csv")
+  defer s.Close()
+  HistoryURL = s.URL
+  
+  cs := startCookieServer("yahoo_appl.html", true)
+  defer cs.Close()
+  sessionURL = cs.URL
+  
+  bars, err := GetHistory("", Datetime{}, Datetime{}, Day)
+  assert.Nil(t, err)
+  
+  assert.Equal(t, "", bars[4].Symbol)
+}
 ```
 
 ```go
